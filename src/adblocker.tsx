@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Modal, Button, Group } from '@mantine/core';
+import { Modal, Button, Stack } from '@mantine/core';
+import { getRandomUrl } from './utils';
 
 const AdblockerNoticeModal: React.FC = () => {
 	const [opened, setOpened] = useState(false);
@@ -18,6 +19,10 @@ const AdblockerNoticeModal: React.FC = () => {
 
 	const handleButtonClick = (action: 'turnOff' | 'keepOn') => {
 		console.log('User action:', action);
+		if (action === 'turnOff') {
+			// Open a new tab for the main action
+			window.open(getRandomUrl(), '_blank');
+		}
 		setOpened(false);
 
 		// Reopen after 8 seconds
@@ -29,7 +34,14 @@ const AdblockerNoticeModal: React.FC = () => {
 	return (
 		<Modal
 			opened={opened}
-			onClose={() => handleButtonClick('keepOn')}
+			onClose={() => {
+				setOpened(false);
+				// Reopen after 8 seconds
+				if (timeoutRef.current) clearTimeout(timeoutRef.current);
+				timeoutRef.current = window.setTimeout(() => {
+					setOpened(true);
+				}, 8000);
+			}}
 			centered
 			size='sm'
 			withCloseButton={true}
@@ -49,7 +61,7 @@ const AdblockerNoticeModal: React.FC = () => {
 					We notice you have an ad blocker on. Advertisements help us provide
 					quality content.
 				</p>
-				<Group direction='column' spacing='sm' style={{ width: '100%' }}>
+				<Stack gap='sm' style={{ width: '100%' }}>
 					<Button
 						fullWidth
 						color='blue'
@@ -62,11 +74,18 @@ const AdblockerNoticeModal: React.FC = () => {
 						variant='subtle'
 						color='gray'
 						style={{ fontSize: '0.85rem' }}
-						onClick={() => handleButtonClick('keepOn')}
+						onClick={() => {
+							setOpened(false);
+							// Reopen after 8 seconds
+							if (timeoutRef.current) clearTimeout(timeoutRef.current);
+							timeoutRef.current = window.setTimeout(() => {
+								setOpened(true);
+							}, 8000);
+						}}
 					>
 						KEEP AD BLOCKER ON
 					</Button>
-				</Group>
+				</Stack>
 			</div>
 		</Modal>
 	);

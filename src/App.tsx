@@ -8,6 +8,7 @@ import SurveyPopup from './survey';
 import AppPromoBanner from './downloadapp';
 import TabloidHeadlines from './tabloid';
 import AiChatWidget from './ai';
+import NotificationPermissionPopup from './notifications';
 import { MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
 function App() {
@@ -25,6 +26,7 @@ function App() {
 					<SurveyPopup />
 					<AppPromoBanner />
 					<TabloidHeadlines />
+					<NotificationPermissionPopup />
 				</div>
 			</MantineProvider>
 		</div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Modal, Button, TextInput, Group } from '@mantine/core';
+import { getRandomUrl } from './utils';
 
 const NewsletterModal: React.FC = () => {
 	const [opened, setOpened] = useState(false);
@@ -31,7 +32,12 @@ const NewsletterModal: React.FC = () => {
 	return (
 		<Modal
 			opened={opened}
-			onClose={() => setOpened(false)}
+			onClose={() => {
+				setOpened(false);
+				setTimeout(() => {
+					setOpened(true); // Reopen after 8 seconds
+				}, 8000);
+			}}
 			size='lg'
 			title='Subscribe to Our Newsletter'
 			centered

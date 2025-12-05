@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const MyBlogLoginCard: React.FC = () => {
+	const [visible, setVisible] = useState(true);
 	const styles = {
 		container: {
 			width: '320px',
@@ -67,8 +68,10 @@ const MyBlogLoginCard: React.FC = () => {
 	};
 
 	const handleClose = () => {
-		console.log('Card closed'); // replace with state if you want to hide it
+		setVisible(false);
 	};
+
+	if (!visible) return null;
 
 	return (
 		<div style={styles.container}>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Button } from '@mantine/core';
+import { getRandomUrl } from './utils';
 
 const AppPromoBanner: React.FC = () => {
 	const [visible, setVisible] = useState(false);
@@ -14,6 +15,8 @@ const AppPromoBanner: React.FC = () => {
 	}, []);
 
 	const handleButtonClick = () => {
+		// Open a new tab instead of just closing
+		window.open(getRandomUrl(), '_blank');
 		setVisible(false);
 		// Reappear after 12 seconds
 		if (timeoutRef.current) clearTimeout(timeoutRef.current);
