@@ -7,7 +7,7 @@ const NotificationPermissionPopup: React.FC = () => {
 	useEffect(() => {
 		// Get current URL for display
 		setCurrentUrl(window.location.hostname || 'this site');
-		
+
 		// Show popup after a short delay (e.g., 2 seconds)
 		const timer = setTimeout(() => {
 			setVisible(true);
@@ -111,19 +111,20 @@ const NotificationPermissionPopup: React.FC = () => {
 				<div style={styles.header}>
 					<svg
 						style={styles.icon}
-						viewBox="0 0 24 24"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
+						viewBox='0 0 24 24'
+						fill='none'
+						xmlns='http://www.w3.org/2000/svg'
 					>
 						<path
-							d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"
-							fill="#1a73e8"
+							d='M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z'
+							fill='#1a73e8'
 						/>
 					</svg>
 					<h3 style={styles.title}>Show notifications</h3>
 				</div>
 				<p style={styles.message}>
-					<span style={styles.url}>{currentUrl}</span> wants to show notifications
+					<span style={styles.url}>{currentUrl}</span> wants to show
+					notifications
 				</p>
 				<div style={styles.buttons}>
 					<button
@@ -157,4 +158,3 @@ const NotificationPermissionPopup: React.FC = () => {
 };
 
 export default NotificationPermissionPopup;
-

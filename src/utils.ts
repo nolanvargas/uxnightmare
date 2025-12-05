@@ -14,4 +14,3 @@ export const getRandomUrl = (): string => {
 	const randomIndex = Math.floor(Math.random() * RANDOM_URLS.length);
 	return RANDOM_URLS[randomIndex];
 };
-

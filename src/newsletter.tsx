@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Modal, Button, TextInput, Group } from '@mantine/core';
-import { getRandomUrl } from './utils';
 
 const NewsletterModal: React.FC = () => {
 	const [opened, setOpened] = useState(false);
